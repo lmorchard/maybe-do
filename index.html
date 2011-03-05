@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Maybe</title>
+        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.0a3.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+    </head>
+    <body>
+
+        <section data-role="page" data-theme="a" id="maybe-home">
+
+            <div data-role="header">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a id="nav-home" class="selected" href="#maybe-home" data-icon="home" data-iconpos="top">Maybe Do</a></li>
+                        <li><a id="nav-compare" href="#maybe-compare" data-icon="star" data-iconpos="top">Compare</a></li>
+                        <li><a id="nav-send" href="#maybe-send" data-icon="forward" data-iconpos="top">Send</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div data-role="content">	
+                <form>
+                    <div id="body-field" data-role="fieldcontain">
+                        <label for="body">What could you be doing?</label>
+                        <textarea cols="40" rows="8" name="body" id="body" data-theme="d"></textarea>
+                        <a href="#" id="add-item" data-role="button">Add</a>
+                        <a href="#" id="save-item" data-role="button">Save</a>
+                    </div>
+                </form>
+                <ul id="maybe-items" data-role="listview" data-split-icon="gear" data-inset="true">
+                    <script id="maybe_item" type="text/html">
+                        <li id="item-{{cid}}" data-cid="{{cid}}" class="item">
+                            <a href="#maybe-settings" class="select body">{{body}}</a>
+                            <!--
+                            <div class="ui-grid-b controls" data-inline="true">
+                                <a href="#" class="ui-block-a" data-role="button" 
+                                    data-icon="arrow-u" data-theme="a">Up</a>
+                                <a href="#" class="ui-block-b" data-role="button" 
+                                    data-icon="delete" data-theme="e">Delete</a>
+                                <a href="#" class="ui-block-c" data-role="button" 
+                                    data-icon="arrow-d" data-theme="a">Down</a>
+                            </div>
+                            <a href="#" class="options">Options</a>
+                            -->
+                        </li>
+                    </script>
+                </ul>
+            </div>
+
+            <div data-role="footer" data-id="main-nav" data-position="fixed">
+            </div>
+
+        </section>
+
+        <section data-role="page" data-theme="a" id="maybe-settings">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a id="nav-home" href="#maybe-home" data-icon="home" data-iconpos="top">Maybe Do</a></li>
+                        <li><a id="nav-compare" class="selected" href="#maybe-compare" data-icon="star" data-iconpos="top">Compare</a></li>
+                        <li><a id="nav-send" href="#maybe-send" data-icon="forward" data-iconpos="top">Send</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">	
+                <p>Page content goes here.</p>		
+            </div>
+            <div data-role="footer" data-id="main-nav">
+            </div>
+        </section>
+
+        <section data-role="page" data-theme="a" id="maybe-compare">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a id="nav-home" href="#maybe-home" data-icon="home" data-iconpos="top">Maybe Do</a></li>
+                        <li><a id="nav-compare" href="#maybe-compare" data-icon="star" data-iconpos="top">Compare</a></li>
+                        <li><a id="nav-send" class="selected" href="#maybe-send" data-icon="forward" data-iconpos="top">Send</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">	
+                <p>Page content goes here.</p>		
+            </div>
+            <div data-role="footer" data-id="main-nav">
+            </div>
+        </section>
+
+        <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+        <script type="text/javascript" src="js/async.min.js"></script>
+        <script type="text/javascript" src="js/underscore-min.js"></script>
+        <!--<script type="text/javascript" src="js/backbone-min.js"></script>-->
+        <script type="text/javascript" src="js/backbone.js"></script>
+        <script type="text/javascript" src="js/ICanHaz.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <!--<script type="text/javascript" src="jqm/jquery.mobile-1.0a3.min.js"></script>-->
+        <script type="text/javascript" src="jqm/jquery.mobile-1.0a3.js"></script>
+    
+    </body>
