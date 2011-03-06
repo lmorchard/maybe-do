@@ -15,4 +15,9 @@
     * Dropbox?
     * data: URI bookmarks
 
+    * Blobastorous
+        * Allow setting of https://blobastor.us/api.js include for alternate storage servers
+        * Need an async load of that include to honor setting
+        * Using source from https://github.com/lloyd/blobastorus
+
 * Make an Open Web Application manifest

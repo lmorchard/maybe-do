@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="index.appcache">
+<html>
     <head>
         <title>Install Maybe Do?</title>
     </head>
@@ -7,18 +7,18 @@
         <section>
             <h1>Install Maybe Do?</h1>
             <p><a href="javascript:install()">Click here to install this web application</a></p>
+            <form><textarea cols="70" rows="10" id="result"></textarea></form>
         </section>
         <script type="text/javascript" href="https://myapps.mozillalabs.com/jsapi/include.js"></script>
         <script type="text/javascript">
             function install () {
                 navigator.apps.install({
-                    "url": "manifest.webapp",
+                    "url": "http://decafbad.com/2011/03/maybe/manifest.webapp",
                     "onsuccess": function () {
-                        alert("Thank you for installing this awesome app.");
+                        document.getElementById('result').value = "Installed!";
                     },
                     "onerror": function (err) {
-                        alert("Something went wrong.");
-                        console.log(err);
+                        document.getElementById('result').value = JSON.stringify(err);
                     }
                 });
             }
