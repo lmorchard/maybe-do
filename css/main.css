@@ -1,35 +1,118 @@
-/** main styles */
-section h2, section p { text-align: center; }
-#maybe-home label[for=body] { font-weight: bold; }
-#maybe-home #body { display: block; width: 95%; }
-
-#maybe-home #save-item { display: none; }
-
-.min-width-480px #maybe-home #body { display: block; width: 97.5%; }
-#maybe-home #body-field { padding-top: 0; margin-top: 0 }
-
-.min-width-480px #maybe-home #body-field { padding-top: 0; margin-top: 0 }
-#maybe-home #body-field label { text-align: center }
-.min-width-480px #maybe-home #body-field label { display: block; width: 100%; }
-
-#maybe-home #maybe-items li.item .ui-btn-text { white-space: normal; font-size: 0.80em; }
-#maybe-home #maybe-items li.item > .ui-btn-inner { padding-right: 50px; }
-
-.item .body { display: block; }
-.item .controls { display: none; }
-.item .controls .ui-btn-inner { padding-right: 65px; }
-.item.show-controls .controls { display: block; }
-.show-controls .item .controls { display: block; }
-.item .controls .ui-block-a, .item .controls .ui-block-b, .item .controls .ui-block-c {
-    width: 30%;
+section h2, section p {
+     text-align: center;
 }
 
-#body-field #add-item { display: block; }
-#body-field #save-item { display: none; }
-#body-field.edit-mode #add-item { display: none; }
-#body-field.edit-mode #save-item { display: block; }
+#maybe-home label[for="body"] {
+     font-weight: bold;
+}
 
-#maybe-compare h2 { font-size: 1.2em; text-align: center; }
-#maybe-compare #compare-items li.item { font-size: 1.5em; }
-#maybe-compare #compare-items li.item .ui-btn-text { white-space: normal; }
-#maybe-compare #compare-items li.item > .ui-btn-inner { padding-right: 50px; } 
+#maybe-home #body {
+     display: block;
+     width: 95%;
+}
+
+#maybe-home #save-item {
+     display: none;
+}
+
+.min-width-768px #maybe-home form {
+    float: left;
+    width: 33%;
+}
+.min-width-768px #maybe-home form #body-field {
+    padding-right: 1.25em;
+}
+.min-width-768px #maybe-home ul#maybe-items {
+    margin-left: 33%;
+}
+
+.min-width-480px #maybe-home #body {
+     display: block;
+     width: 97.5%;
+}
+
+#maybe-home #body-field {
+     margin-top: 0pt;
+     padding-top: 0pt;
+}
+
+.min-width-480px #maybe-home #body-field {
+     margin-top: 0pt;
+     padding-top: 0pt;
+}
+
+#maybe-home #body-field label {
+     text-align: center;
+}
+
+.min-width-480px #maybe-home #body-field label {
+     display: block;
+     width: 100%;
+}
+
+#maybe-home #maybe-items li.item .ui-btn-text {
+     font-size: 0.8em;
+     white-space: normal;
+}
+
+#maybe-home #maybe-items li.item > .ui-btn-inner {
+     padding-right: 50px;
+}
+
+.item .body {
+     display: block;
+}
+
+.item .controls {
+     display: none;
+}
+
+.item .controls .ui-btn-inner {
+     padding-right: 65px;
+}
+
+.item.show-controls .controls {
+     display: block;
+}
+
+.show-controls .item .controls {
+     display: block;
+}
+
+.item .controls .ui-block-a, .item .controls .ui-block-b, .item .controls .ui-block-c {
+     width: 30%;
+}
+
+#body-field #add-item {
+     display: block;
+}
+
+#body-field #save-item {
+     display: none;
+}
+
+#body-field.edit-mode #add-item {
+     display: none;
+}
+
+#body-field.edit-mode #save-item {
+     display: block;
+}
+
+#maybe-compare h2 {
+     font-size: 1.2em;
+     text-align: center;
+}
+
+#maybe-compare #compare-items li.item {
+     font-size: 1.5em;
+}
+
+#maybe-compare #compare-items li.item .ui-btn-text {
+     white-space: normal;
+}
+
+#maybe-compare #compare-items li.item > .ui-btn-inner {
+     padding-right: 50px;
+}
+
