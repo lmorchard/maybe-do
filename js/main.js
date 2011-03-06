@@ -39,6 +39,7 @@ var MaybeUI = ( function () {
 
         blobastorus_user: null,
         blobastorus_save_delay: 3000,
+        blobastorus_scope: 'maybedo',
 
         /** Initialize the view */
         init: function () {
@@ -335,6 +336,8 @@ var MaybeUI = ( function () {
         checkBlobastorusData: function () {
             if ('undefined' == typeof Blobastorus) { return; }
 
+            Blobastorus.setScope($this.blobastorus_scope);
+
             Blobastorus.getUser(function(user, error) {
 
                 // step 3: if the user is not authenticated, show them a button they can
@@ -357,7 +360,7 @@ var MaybeUI = ( function () {
 
                     // step 5: now let's get the user's blob. how many times have they logged in?
                     Blobastorus.getBlob(function(data) {
-                        if (data.items) {
+                        if (data && data.items) {
                             $this.loadItems(data.items);
                             $this.refreshItems();
                         }
