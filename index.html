@@ -10,11 +10,17 @@
         <section data-role="page" data-theme="a" id="maybe-home">
 
             <div data-role="header">
+                <h1>Maybe Do</h1>
                 <div data-role="navbar">
                     <ul>
-                        <li><a id="nav-home" class="selected" href="#maybe-home" data-icon="home" data-iconpos="top">Maybe Do</a></li>
-                        <li><a id="nav-compare" href="#maybe-compare" data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-send" href="#maybe-send" data-icon="forward" data-iconpos="top">Send</a></li>
+                        <li><a id="nav-home" href="#maybe-home" 
+                            data-icon="home" data-iconpos="top">Brainstorm</a></li>
+                        <li><a id="nav-compare" href="#maybe-compare" 
+                            data-icon="star" data-iconpos="top">Compare</a></li>
+                        <!--
+                        <li><a id="nav-send" href="#maybe-send" 
+                            data-icon="forward" data-iconpos="top">Send</a></li>
+                        -->
                     </ul>
                 </div>
             </div>
@@ -53,30 +59,56 @@
 
         </section>
 
-        <section data-role="page" data-theme="a" id="maybe-settings">
+        <section data-role="page" data-theme="a" id="maybe-compare">
+
             <div data-role="header">
+                <h1>Maybe Do</h1>
                 <div data-role="navbar">
                     <ul>
-                        <li><a id="nav-home" href="#maybe-home" data-icon="home" data-iconpos="top">Maybe Do</a></li>
-                        <li><a id="nav-compare" class="selected" href="#maybe-compare" data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-send" href="#maybe-send" data-icon="forward" data-iconpos="top">Send</a></li>
+                        <li><a id="nav-home" href="#maybe-home" 
+                            data-icon="home" data-iconpos="top">Brainstorm</a></li>
+                        <li><a id="nav-compare" href="#maybe-compare"
+                            data-icon="star" data-iconpos="top">Compare</a></li>
+                        <!--
+                        <li><a id="nav-send" href="#maybe-send" 
+                            data-icon="forward" data-iconpos="top">Send</a></li>
+                        -->
                     </ul>
                 </div>
             </div>
+
             <div data-role="content">	
-                <p>Page content goes here.</p>		
+                
+                <h2>Tap the more important of these:</h2>
+
+                <ul id="compare-items" data-role="listview" data-split-icon="gear" data-inset="true">
+                    <script id="sort_item" type="text/html">
+                        <li data-cid="{{cid}}" data-idx="{{idx}}" class="item">
+                            <a href="#maybe-settings" class="select body">{{body}}</a>
+                        </li>
+                    </script>
+                </ul>
+
+                <p>Keep tapping until you think you're done</p>
+
             </div>
+
             <div data-role="footer" data-id="main-nav">
             </div>
+
         </section>
 
-        <section data-role="page" data-theme="a" id="maybe-compare">
+        <!--
+        <section data-role="page" data-theme="a" id="maybe-send">
             <div data-role="header">
                 <div data-role="navbar">
                     <ul>
-                        <li><a id="nav-home" href="#maybe-home" data-icon="home" data-iconpos="top">Maybe Do</a></li>
-                        <li><a id="nav-compare" href="#maybe-compare" data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-send" class="selected" href="#maybe-send" data-icon="forward" data-iconpos="top">Send</a></li>
+                        <li><a id="nav-home" href="#maybe-home" 
+                            data-icon="home" data-iconpos="top">Maybe Do</a></li>
+                        <li><a id="nav-compare" href="#maybe-compare" 
+                            data-icon="star" data-iconpos="top">Compare</a></li>
+                        <li><a id="nav-send" class="selected" href="#maybe-send" 
+                            data-icon="forward" data-iconpos="top">Send</a></li>
                     </ul>
                 </div>
             </div>
@@ -86,6 +118,7 @@
             <div data-role="footer" data-id="main-nav">
             </div>
         </section>
+        -->
 
         <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
         <script type="text/javascript" src="js/async.min.js"></script>

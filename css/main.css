@@ -1,5 +1,5 @@
 /** main styles */
-#maybe-home h2 { text-align: center; }
+section h2, section p { text-align: center; }
 #maybe-home label[for=body] { font-weight: bold; }
 #maybe-home #body { display: block; width: 95%; }
 
@@ -28,3 +28,7 @@
 #body-field #save-item { display: none; }
 #body-field.edit-mode #add-item { display: none; }
 #body-field.edit-mode #save-item { display: block; }
+
+#maybe-compare #compare-items li.item { font-size: 1.5em; }
+#maybe-compare #compare-items li.item .ui-btn-text { white-space: normal; }
+#maybe-compare #compare-items li.item > .ui-btn-inner { padding-right: 50px; } 
