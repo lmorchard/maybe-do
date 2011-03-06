@@ -1,0 +1,9 @@
+{
+    "version": "0.1",
+    "name": "Maybe Do",
+    "description": "A tool to help you ponder what to put on your TODO list.",
+    "developer": {
+        "name": "Leslie Michael Orchard",
+        "url": "http://lmorchard.com"
+    }
+}
