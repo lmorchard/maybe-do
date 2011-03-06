@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html manifest="index.appcache">
     <head>
         <title>Install Maybe Do?</title>
     </head>
     <body>
         <section>
             <h1>Install Maybe Do?</h1>
-            <p><a href="javascript:install()">Click here to install</a></p>
+            <p><a href="javascript:install()">Click here to install this web application</a></p>
         </section>
         <script type="text/javascript" href="https://myapps.mozillalabs.com/jsapi/include.js"></script>
         <script type="text/javascript">
@@ -18,6 +18,7 @@
                     },
                     "onerror": function (err) {
                         alert("Something went wrong.");
+                        console.log(err);
                     }
                 });
             }
