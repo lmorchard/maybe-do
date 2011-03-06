@@ -1,7 +1,3 @@
-section h2, section p {
-     text-align: center;
-}
-
 #maybe-home label[for="body"] {
      font-weight: bold;
 }
@@ -103,6 +99,9 @@ section h2, section p {
      font-size: 1.2em;
      text-align: center;
 }
+#maybe-compare p {
+     text-align: center;
+}
 
 #maybe-compare #compare-items li.item {
      font-size: 1.5em;
@@ -116,3 +115,7 @@ section h2, section p {
      padding-right: 50px;
 }
 
+#maybe-settings #blobastorus-status #login { display: inline; }
+#maybe-settings #blobastorus-status #whoami { display: none; }
+#maybe-settings #blobastorus-status.logged-in #login { display: none; }
+#maybe-settings #blobastorus-status.logged-in #whoami { display: inline; }

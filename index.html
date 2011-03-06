@@ -20,8 +20,8 @@
                             data-icon="home" data-iconpos="top">Brainstorm</a></li>
                         <li><a id="nav-compare" href="#maybe-compare" 
                             data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-export" href="#maybe-export" 
-                            data-icon="forward" data-iconpos="top">Export</a></li>
+                        <li><a id="nav-settings" href="#maybe-settings" 
+                            data-icon="gear" data-iconpos="top">Settings</a></li>
                     </ul>
                 </div>
             </div>
@@ -70,8 +70,8 @@
                             data-icon="home" data-iconpos="top">Brainstorm</a></li>
                         <li><a id="nav-compare" href="#maybe-compare"
                             data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-export" href="#maybe-export" 
-                            data-icon="forward" data-iconpos="top">Export</a></li>
+                        <li><a id="nav-settings" href="#maybe-settings" 
+                            data-icon="gear" data-iconpos="top">Settings</a></li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +97,7 @@
 
         </section>
 
-        <section data-role="page" data-theme="a" id="maybe-export">
+        <section data-role="page" data-theme="a" id="maybe-settings">
 
             <div data-role="header">
                 <h1>Maybe Do</h1>
@@ -107,19 +107,24 @@
                             data-icon="home" data-iconpos="top">Brainstorm</a></li>
                         <li><a id="nav-compare" href="#maybe-compare"
                             data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-export" href="#maybe-export" 
-                            data-icon="forward" data-iconpos="top">Export</a></li>
+                        <li><a id="nav-settings" href="#maybe-settings" 
+                            data-icon="gear" data-iconpos="top">Settings</a></li>
                     </ul>
                 </div>
             </div>
 
             <div data-role="content">	
                 
-                <h2>Export your list</h2>
+                <ul>
+                    <li><p>Bookmark <a href="#" id="settings-link">a list snapshot</a></p></li>
+                    <li id="blobastorus-status">
+                        <p>Blobastorus:
+                            <a href="#" id="login"><img src="http://blobastor.us/example/sign-in-with-twitter-d.png" /></a>
+                            <span id="whoami">Logged in as <span id="user"></span>.</span>
+                        </p>
+                    </li>
+                </ul>
 
-                <p id="export-links">
-                    <a href="#" id="export-link">Bookmark this link</a>
-                </p>
 
             </div>
 
@@ -135,6 +140,9 @@
         <script type="text/javascript" src="js/ICanHaz.min.js"></script>
         <script type="text/javascript" src="js/lz77.js"></script>
         <script type="text/javascript" src="jqm/jquery.mobile-1.0a3.min.js"></script>
+        
+        <script type="text/javascript" src="https://blobastor.us/api.js"></script>
+
         <script type="text/javascript" src="js/main.js"></script>
     
     </body>

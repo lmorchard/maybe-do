@@ -37,6 +37,9 @@ var MaybeUI = ( function () {
 
     var $this = {
 
+        blobastorus_user: null,
+        blobastorus_save_delay: 3000,
+
         /** Initialize the view */
         init: function () {
 
@@ -57,19 +60,37 @@ var MaybeUI = ( function () {
             $this.loadItems();
             $(document).ready($this.onReady);
 
+            return $this;
+        },
+
+        /** Start with a clean items collection */
+        clearItems: function () {
+            $this.items = new MaybeDoItemCollection();
+            var refresh = function () {
+                $this.refreshItems();
+                $this.snapshotItems();
+            };
+            $this.items.bind('add', refresh);
+            $this.items.bind('remove', refresh);
+            $this.items.bind('change', refresh);
         },
 
         /** Load items from localstorage */
-        loadItems: function () {
-            $this.items = new MaybeDoItemCollection();
+        loadItems: function (items_data) {
             try {
-                var items_data = JSON.parse(window.localStorage.items);
+
+                var items_data = items_data || JSON.parse(window.localStorage.items);
+                if (!items_data) { return; }
+
+                $this.clearItems();
+
                 _(items_data).each(function (data) {
                     $this.items.add(
                         new MaybeDoItem(data), 
                         { silent: true }
                     );
                 });
+
             } catch (e) {
                 // No-op, assume bad localstorage data.
             }
@@ -83,6 +104,7 @@ var MaybeUI = ( function () {
                 return item.toJSON();
             });
             window.localStorage.items = JSON.stringify(items_data);
+            $this.saveToBlobastorus(items_data);
         },
 
         /** Search up through parents for a containing link element */
@@ -98,8 +120,8 @@ var MaybeUI = ( function () {
             $this.wireUpHomePageUI();
             $this.wireUpComparePageUI();
             $this.wireUpPageChanges();
-            $this.wireUpItemCollectionEvents();
             $this.refreshItems();
+            $this.checkBlobastorusData();
         },
 
         /** Wire up UI elements for home page */
@@ -149,22 +171,8 @@ var MaybeUI = ( function () {
             $('#maybe-compare').live('pageshow', function (ev, ui) {
                 $this.initCompare();
             });
-            $('#maybe-export').live('pageshow', function (ev, ui) {
-                $this.initExport();
-            });
-        },
-
-        /** Wire up handlers to changes in model objects. */
-        wireUpItemCollectionEvents: function () {
-            $this.items.bind('add', function () {
-                $this.refreshItems();
-                $this.snapshotItems();
-            });
-            $this.items.bind('remove', function () {
-                $this.snapshotItems();
-            });
-            $this.items.bind('change', function () {
-                $this.snapshotItems();
+            $('#maybe-settings').live('pageshow', function (ev, ui) {
+                $this.initSettings();
             });
         },
 
@@ -242,18 +250,18 @@ var MaybeUI = ( function () {
             $this.updateCompare();
         },
 
-        /** Initialize the export page */
-        initExport: function () {
+        /** Initialize the settings page */
+        initSettings: function () {
             $this.snapshotItems();
 
             var lz = new LZ77();
             var data = btoa(lz.compress(window.localStorage.items));
-            $('#export-link').attr('href', 'index.html?items=' + data);
+            $('#settings-link').attr('href', 'index.html?items=' + data);
 
             /*
-            var par = $('#export-links');
+            var par = $('#settings-links');
             par.find('>a').remove();
-            par.append(ich.export_link({ 
+            par.append(ich.settings_link({ 
                 href: 'index.html?items='+data
             }));
             */
@@ -322,6 +330,56 @@ var MaybeUI = ( function () {
             } else {
                 return decodeURIComponent(results[1].replace(/\+/g, " "));
             }
+        },
+
+        checkBlobastorusData: function () {
+            if ('undefined' == typeof Blobastorus) { return; }
+
+            Blobastorus.getUser(function(user, error) {
+
+                // step 3: if the user is not authenticated, show them a button they can
+                // click on to authenticate via twitter
+                if (error === 'needsAuth') {
+                    $("#login").show();
+                    $("#login").click(function() { 
+                        Blobastorus.redirectUser(); 
+                        return false; 
+                    });
+                    $this.blobastorus_user = null;
+                }
+
+                // step 4: if the user *is* authenticated, welcome them by name
+                else {
+                    $("#blobastorus-status").addClass('logged-in');
+                    $("#howmany").show();
+                    $("#user").text(user);
+                    $this.blobastorus_user = user;
+
+                    // step 5: now let's get the user's blob. how many times have they logged in?
+                    Blobastorus.getBlob(function(data) {
+                        if (data.items) {
+                            $this.loadItems(data.items);
+                            $this.refreshItems();
+                        }
+                    });
+                }
+            });
+
+        },
+
+        /** 
+         * Update blobastorus data from localstorage. 
+         * This will wait 3 seconds after any change before posting a new blob.
+         */
+        saveToBlobastorus: function (items_data) {
+            var fn = arguments.callee;
+            if (!$this.blobastorus_user) { return; }
+            if (fn._delay) { window.clearTimeout(fn._delay); }
+            fn._delay = window.setTimeout(function () {
+                Blobastorus.setBlob({
+                    items: items_data
+                });
+            }, $this.blobastorus_save_delay);
         },
 
         EOF:null
