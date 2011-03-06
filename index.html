@@ -2,8 +2,11 @@
 <html>
     <head>
         <title>Maybe</title>
-        <link rel="stylesheet" type="text/css" href="jqm/jquery.mobile-1.0a3.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" media="screen" type="text/css" href="jqm/jquery.mobile-1.0a3.min.css" />
+        <link rel="stylesheet" media="screen" type="text/css" href="css/main.css" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     </head>
     <body>
 
@@ -17,10 +20,8 @@
                             data-icon="home" data-iconpos="top">Brainstorm</a></li>
                         <li><a id="nav-compare" href="#maybe-compare" 
                             data-icon="star" data-iconpos="top">Compare</a></li>
-                        <!--
-                        <li><a id="nav-send" href="#maybe-send" 
-                            data-icon="forward" data-iconpos="top">Send</a></li>
-                        -->
+                        <li><a id="nav-export" href="#maybe-export" 
+                            data-icon="forward" data-iconpos="top">Export</a></li>
                     </ul>
                 </div>
             </div>
@@ -69,10 +70,8 @@
                             data-icon="home" data-iconpos="top">Brainstorm</a></li>
                         <li><a id="nav-compare" href="#maybe-compare"
                             data-icon="star" data-iconpos="top">Compare</a></li>
-                        <!--
-                        <li><a id="nav-send" href="#maybe-send" 
-                            data-icon="forward" data-iconpos="top">Send</a></li>
-                        -->
+                        <li><a id="nav-export" href="#maybe-export" 
+                            data-icon="forward" data-iconpos="top">Export</a></li>
                     </ul>
                 </div>
             </div>
@@ -89,7 +88,7 @@
                     </script>
                 </ul>
 
-                <p>Keep going until things repeat</p>
+                <p>Keep tapping until things repeat</p>
 
             </div>
 
@@ -98,34 +97,45 @@
 
         </section>
 
-        <!--
-        <section data-role="page" data-theme="a" id="maybe-send">
+        <section data-role="page" data-theme="a" id="maybe-export">
+
             <div data-role="header">
+                <h1>Maybe Do</h1>
                 <div data-role="navbar">
                     <ul>
                         <li><a id="nav-home" href="#maybe-home" 
-                            data-icon="home" data-iconpos="top">Maybe Do</a></li>
-                        <li><a id="nav-compare" href="#maybe-compare" 
+                            data-icon="home" data-iconpos="top">Brainstorm</a></li>
+                        <li><a id="nav-compare" href="#maybe-compare"
                             data-icon="star" data-iconpos="top">Compare</a></li>
-                        <li><a id="nav-send" class="selected" href="#maybe-send" 
-                            data-icon="forward" data-iconpos="top">Send</a></li>
+                        <li><a id="nav-export" href="#maybe-export" 
+                            data-icon="forward" data-iconpos="top">Export</a></li>
                     </ul>
                 </div>
             </div>
+
             <div data-role="content">	
-                <p>Page content goes here.</p>		
+                
+                <h2>Export your list</h2>
+
+                <p id="export-links">
+                    <a href="#" id="export-link">Bookmark this link</a>
+                </p>
+
             </div>
+
             <div data-role="footer" data-id="main-nav">
             </div>
+
         </section>
-        -->
 
         <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
         <script type="text/javascript" src="js/async.min.js"></script>
         <script type="text/javascript" src="js/underscore-min.js"></script>
         <script type="text/javascript" src="js/backbone-min.js"></script>
         <script type="text/javascript" src="js/ICanHaz.min.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/lz77.js"></script>
         <script type="text/javascript" src="jqm/jquery.mobile-1.0a3.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     
     </body>
+</html>

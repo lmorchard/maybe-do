@@ -39,11 +39,24 @@ var MaybeUI = ( function () {
 
         /** Initialize the view */
         init: function () {
+
+            // Look for item data in the query string, decompress and
+            // initialize localStorage from it if present.
+            var qs_items = $this.getParameterByName('items');
+            if (qs_items) {
+                var lz = new LZ77();
+                window.localStorage.items = lz.decompress(atob(qs_items));
+            }
+
+            // Initialize localStorage if none yet present
             if (window.localStorage && !window.localStorage.items) {
                 window.localStorage.items = "[]";
             }
+
+            // Load any items available from localStorage, fire up the UI.
             $this.loadItems();
             $(document).ready($this.onReady);
+
         },
 
         /** Load items from localstorage */
@@ -136,6 +149,9 @@ var MaybeUI = ( function () {
             $('#maybe-compare').live('pageshow', function (ev, ui) {
                 $this.initCompare();
             });
+            $('#maybe-export').live('pageshow', function (ev, ui) {
+                $this.initExport();
+            });
         },
 
         /** Wire up handlers to changes in model objects. */
@@ -226,6 +242,23 @@ var MaybeUI = ( function () {
             $this.updateCompare();
         },
 
+        /** Initialize the export page */
+        initExport: function () {
+            $this.snapshotItems();
+
+            var lz = new LZ77();
+            var data = btoa(lz.compress(window.localStorage.items));
+            $('#export-link').attr('href', 'index.html?items=' + data);
+
+            /*
+            var par = $('#export-links');
+            par.find('>a').remove();
+            par.append(ich.export_link({ 
+                href: 'index.html?items='+data
+            }));
+            */
+        },
+
         /** Update the display based on the current sort index */
         updateCompare: function () {
             if ($this.sort_idx >= $this.sort_cids.length) { return; }
@@ -275,6 +308,20 @@ var MaybeUI = ( function () {
             }
 
             $this.updateCompare();
+        },
+
+        /** Get a query string parameter by name */
+        getParameterByName: function (name) {
+            // see: http://stackoverflow.com/questions/901115/get-querystring-values-with-jquery/901144#901144
+            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+            var regexS = "[\\?&]"+name+"=([^&#]*)";
+            var regex = new RegExp( regexS );
+            var results = regex.exec( window.location.href );
+            if( results == null ) {
+                return "";
+            } else {
+                return decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
         },
 
         EOF:null
