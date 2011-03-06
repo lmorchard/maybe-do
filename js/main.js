@@ -1,4 +1,6 @@
-/** main JS enhanvements */
+/** 
+ * main JS enhanvements 
+ */
 
 var MaybeDoItem = Backbone.Model.extend({
     
@@ -33,24 +35,6 @@ var MaybeDoItemCollection = Backbone.Collection.extend({
 
 var MaybeUI = ( function () {
 
-    var items = [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "Donec varius risus vitae mauris consectetur tincidunt.",
-        "In in sapien justo.",
-        "Donec dictum, eros quis mattis dignissim, tortor velit auctor mauris, convallis sodales libero elit eu elit.",
-        "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-        "Donec eu dolor sem.",
-        /*
-        "In ultricies, nisl at rhoncus dignissim, mi est mattis tellus, non mattis lacus ante id nibh.",
-        "Sed enim lorem, dictum in vulputate quis, accumsan ac nisl.",
-        "Sed mi purus, vestibulum tincidunt condimentum ut, pretium vel ante.",
-        "Etiam ut gravida urna.",
-        "Duis nulla justo, ullamcorper vulputate commodo in, blandit eget arcu.",
-        "Quisque mauris eros, imperdiet at dignissim nec, gravida id massa.",
-        */
-        "Cras faucibus turpis vel purus adipiscing vitae fringilla justo dapibus."
-    ];
-
     var $this = {
 
         /** Initialize the view */
@@ -65,7 +49,6 @@ var MaybeUI = ( function () {
         /** Load items from localstorage */
         loadItems: function () {
             $this.items = new MaybeDoItemCollection();
-            console.log(window.localStorage.items);
             try {
                 var items_data = JSON.parse(window.localStorage.items);
                 _(items_data).each(function (data) {
@@ -87,8 +70,6 @@ var MaybeUI = ( function () {
                 return item.toJSON();
             });
             window.localStorage.items = JSON.stringify(items_data);
-            console.log(items_data);
-            console.log(window.localStorage.items);
         },
 
         /** Search up through parents for a containing link element */
